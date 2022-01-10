@@ -25,6 +25,14 @@ reverseString(string)
 module.exports = { reverseString };
 
 // psuedo code
+// str.split(): Will split up a string by each character
+//      I.E: var str = "hello there"
+//           str.split("")
+            // Console.log(str.split("")): will output h e l l o   t h e r e
+            // Console.log(str.split(" ")): Will output "Hello" "there"
+                	// var arr = str.split(" ") -> ["Hello", "There"]
+                	// console.log(str[0]) -> "H"
+                	// console.log(arr[1][0]) -> "T"
 // step 1: Loop Through String
 // step 2: identify if the character is a space
 // step 3: capitalize
@@ -43,6 +51,21 @@ const expected1 = "TNFL-GPYW";
 
 const str2 = "Live from New York, it's Saturday Night!";
 const expected2 = "LFNYISN";
+
+// psuedo code
+// str.split(): Will split up a string by each character
+//      I.E: var str = "hello there"
+//           str.split("")
+            // Console.log(str.split("")): will output h e l l o   t h e r e
+            // Console.log(str.split(" ")): Will output "Hello" "there"
+                	// var arr = str.split(" ") -> ["Hello", "There"]
+                	// console.log(str[0]) -> "H"
+                	// console.log(arr[1][0]) -> "T"
+// step 1: Loop Through String
+// step 2: grab the first character is a space
+// step 3: capitalize
+// step 4: Add it to new string
+// 
 
 /**
  * Turns the given str into an acronym.
