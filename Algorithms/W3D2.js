@@ -75,15 +75,27 @@ const expected2 = "LFNYISN";
  * @returns {string} The given str converted into an acronym.
  */
 function acronymize(str) {
-    for(var i=0; i<= str.length-1; i++){
-        if(str[i]== " " && str[i+1] != str.lengeth){
-            newString = newString + str[i+1]
-        }
-        newString.toUpperCase();
-    }
-    console.log(newString)
-    return newString
+// SETUP-----------
+var acronym="";
+var wordsArr=str.split("");
+// WORK------------
+for (var i=0; i<wordsArr.length; i++){
+    acronym += wordsArr[i][0].toUpperCase();
+    // to access the words inside array wordsArr[i(to get each word inside it)][0]
+}
+// Retrun----------
+return acronym;
 }
 
-string1= "there's no free lunch - gotta pay yer way."
-console.log(acronymize(string1))
+// for(var i=0; i<= str.length-1; i++){
+//     if(str[i]== " " && str[i+1] != str.lengeth){
+//         newString = newString + str[i+1]
+//     }
+//     newString.toUpperCase();
+// }
+// console.log(newString)
+// return newString
+
+
+// string1= "there's no free lunch - gotta pay yer way."
+// console.log(acronymize(string1))
