@@ -1,10 +1,10 @@
 # 1 Count Down
-def countDown(num):
+def CountDown(num):
     Newlist = []
     for x in range(num,-1,-1):
         Newlist.append(x)
     return Newlist
-print(countDown(15))
+print(CountDown(15))
 # 2 Print Return
 def PrintReturn(list):
     print(list[0])
@@ -26,7 +26,11 @@ def ValuesGreaterThanSecond(list1):
     print(len(list2))
     return list2
 print(ValuesGreaterThanSecond([35,55,25,15,0,2,3,17,23]))
-print(ValuesGreaterThanSecond([35,75,25,8,0,2,9,14,23]))
 print(ValuesGreaterThanSecond([1]))
-print(ValuesGreaterThanSecond([]))
-# 5 
+# 5 Length and Value
+def LengthAndValue(size,value):
+    list = []
+    for i in range(size):
+        list.append(value)
+    return list
+print(LengthAndValue(3,8))
