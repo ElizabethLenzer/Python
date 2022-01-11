@@ -33,4 +33,4 @@ def LengthAndValue(size,value):
     for i in range(size):
         list.append(value)
     return list
-print(LengthAndValue(3,8))
+print(LengthAndValue(5,15))
