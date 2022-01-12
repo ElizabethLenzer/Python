@@ -63,4 +63,3 @@ def printInfo(Dlist):
         for string in value:
             print(string)
 printInfo(dojo)
-
