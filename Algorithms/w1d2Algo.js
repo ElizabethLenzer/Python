@@ -8,7 +8,6 @@ Default the separator to a comma with a space after it if no separator is provid
 const arr1 = [1, 2, 3];
 const separator1 = ", ";
 const expected1 = "1, 2, 3";
-
 const arr2 = [1, 2, 3];
 const separator2 = "-";
 const expected2 = "1-2-3";
