@@ -39,17 +39,31 @@ class Cowboys:
     def one_in_the_chamber(self, aliens):
         if random.random() < .16666666:
             aliens.health -= self.strength*2
-        print(f"{self.name} takes out his revolver and shoots for double the damage!")
+            print(f"{self.name} takes out his revolver and shoots for double the damage!")
         else:
-            print(f"{self.name} ")
+            print(f"{self.name} takes out his revolver and misses")
+        return self
 
 marvin = Aliens("Marvin the martian")
 clint = Cowboys("Clint Eastwood")
 
 while marvin.health > 0 and clint.health > 0:
-    player = input("Type start when ready ")
-    if player = "Start":
+    print("Type 'Start' when ready")
+    player = input()
+    if player == "Start":
+        print("It is your turn. Choose an attack( basic / one in the chamber ):")
+        move = input()
+        if move == "basic":
+            clint.basic_attack(marvin)
+        elif move == "one in the chamber":
+            clint.one_in_the_chamber
+        else:
+            print("Not a valid input")
     else:
         print("That was not a valid input")
-        input("Type start when ready ")
-        
+        print("Type start when ready")
+        move = input()
+if marvin.health <= 0:
+    print("You Won!!")
+else:
+    print("You Lost :(")
