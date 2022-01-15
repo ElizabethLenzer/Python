@@ -1,3 +1,18 @@
+class User:
+    def __init__(self, name, age):
+        self.account=BankAccount(int_rate=0.03, balance=0)
+        self.name=name
+        self.age=age
+    def make_deposit(self, amount):
+        self.account.balance += amount
+    def make_withdrawal(self, amount):
+        self.account.balance -= amount
+    def display_userbalance(self):
+        print(self.name,self.account.balance)
+    def transfer_money(self, amount, user):
+        user.make_deposit(amount)
+        self.make_withdrawal(amount)
+
 class BankAccount:
     all_accounts = []
     def __init__(self, int_rate, balance=0):
