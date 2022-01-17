@@ -4,11 +4,12 @@ class User:
         self.name=name
         self.age=age
     def make_deposit(self, amount):
-        self.account.balance += amount
+        self.account.deposit(amount)
     def make_withdrawal(self, amount):
-        self.account.balance -= amount
+        self.account.withdraw(amount)
     def display_userbalance(self):
-        print(self.name,self.account.balance)
+        print(self.name)
+        self.account.display_account_info()
     def transfer_money(self, amount, user):
         user.make_deposit(amount)
         self.make_withdrawal(amount)
