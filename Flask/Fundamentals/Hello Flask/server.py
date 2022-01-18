@@ -1,15 +1,19 @@
-from flask import Flask  # Import Flask to allow us to create our 
+from flask import Flask
+# Import Flask to allow us to create our
+# Flask is a class
 
-app = Flask(__name__)    # Create a new instance of the Flask class called "app"
+app = Flask(__name__)    # Create a new /object of the Flask class called "app"
 
 
-@app.route('/')          # The "@" decorator associates this route with the function immediately following
+@app.route('/')
+# The "@" decorator associates this route with the function immediately following
+#telling flask a route(URL)for our website
 def hello_world():
     return 'Hello World!'  # Return the string 'Hello World!' as a response
 
 # import statements, maybe some other routes
-    
-@app.route('/success')
+
+@app.route('/success') 
 def success():
     return "success"
 # app.run(debug=True) should be the very last statement! 
