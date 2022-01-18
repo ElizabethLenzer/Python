@@ -12,16 +12,28 @@
     <div class="container">
         {% for x in range(0,row): %}
         <div class="row">
-        {% endfor %}
-            <div class="color1"></div>
-            <div class="color2"></div>
+            {% if (x+y)%2 == 0 %}
+            <div class="color1">
+                <style>
+                    .color1{
+                        background-color: {{ color1 }};
+                    }
+                </style>
+            </div>
+            {% else %}
+            <div class="color2">
+                <style>
+                    .color2{
+                        background-color: {{ color2 }};
+                    }
+                </style>
+            </div>
+            {% endif %}
         </div>
-        {% for y in range(0,column): %}
-        <div class="column">
-        {% endfor %}
-            <div class="color1"></div>
-            <div class="color2"></div>
-        </div>
+    {% endfor %}
+    {% for y in range(0,column): %}
+        <div class="column"></div>
+    {% endfor %}
     </div>
 </body>
 </html>
