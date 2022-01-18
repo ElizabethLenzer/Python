@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+    <style>
+        .title{
+            font-size: large;
+            display: flex
+        }
+        .blocks{
+            background-color: {{color}};
+        }
+        .blocks{
+            height:60px;
+            width: 60px;
+            margin: 10px;
+        }
+        #block-container{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Welcome</div>
+    <div id="block-container">
+        {% for x in range(0,num): %}
+            <div class="blocks"></div>
+        {% endfor %}
+    </div>
+</body>
+</html>
