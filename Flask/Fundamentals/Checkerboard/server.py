@@ -18,4 +18,4 @@ def checkerboardRows(rows,columns,color1,color2):
     return render_template('index.html', rows=rows, columns=columns, color1=color1, color2=color2)
 
 if __name__=="__main__":
-    app.run(debug=True) 
+    app.run(debug=True)
