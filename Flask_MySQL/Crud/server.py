@@ -10,7 +10,7 @@ def home():
 def addUser():
     return render_template('AddUser.html')
 
-@app.route('/insert', methods=['POST'])
+@app.route('/Insert', methods=['POST'])
 def ReRoute():
     Users.save(request.form)
     return redirect('/')
