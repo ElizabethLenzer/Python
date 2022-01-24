@@ -1,4 +1,4 @@
-from mySQLConnection import connectToMySQL
+from flask_app.Config.mySQLConnection import connectToMySQL
 
 class Users:
     def __init__(self, data):
