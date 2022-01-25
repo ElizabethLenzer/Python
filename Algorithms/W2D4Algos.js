@@ -65,4 +65,6 @@ const expected3 = false;
  * @param {string} str
  * @returns {boolean} Whether the given strings braces are valid.
  */
-function bracesValid(str) {}
+function bracesValid(str) {
+    
+}
