@@ -1,0 +1,29 @@
+<!-- Adds New Ninjas -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ninja</title>
+</head>
+<body>
+    <form action="/InsertNinja" method="post">
+        <label>First Name:</label>
+        <input type="text" name="First_Name">
+        <label>Last Name:</label>
+        <input type="text" name="Last_Name">
+        <label>Age:</label>
+        <input type="text" name="Age">
+
+        <label>Dojo:</label>
+        <select name="Dojo_Id">
+        <option disabled Selected>--Choose A Dojo--</option>
+        {% for dojo in dojos %}
+        <option value="{{ dojo.ID }}">{{ dojo.Name }}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Enroll">
+    </form>
+</body>
+</html>

@@ -1,4 +1,5 @@
-from flask import render_template
+from urllib import request
+from flask import render_template, request, redirect
 from flask_app.Models.dojo import Dojos
 from flask_app import app
 
@@ -6,14 +7,15 @@ from flask_app import app
 
 @app.route('/')
 def Home():
-    return render_template('index.html')
+    return render_template('Dojo.html', dojos = Dojos.GetAll())
 
-@app.route('/Dojo')
-def AddDojoMain():
-    return render_template('Add_New_Dojo.html', dojo=Dojos.GetAll())
+@app.route('/dojo/<int:Dojo_Id>')
+def AddDojoMain(Dojo_Id):
+    DojoDictionary={'ID':Dojo_Id}
+    return render_template('Show_Ninja.html', dojos = Dojos.get_ninjas(DojoDictionary))
 
-@app.route('/Insert', methods=['POST'])
-def ReRoute():
-    data = {"name":request.form["name"]}
-    Dojos.save (data)
+@app.route('/InsertDojo', methods=['POST'])
+def ReRouteDojos():
+    data = {"Name":request.form["Name"]}
+    Dojos.CreateNew(data)
     return redirect('/')
