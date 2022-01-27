@@ -14,5 +14,6 @@ def AddDojoMain():
 
 @app.route('/Insert', methods=['POST'])
 def ReRoute():
-    Dojos.save(request.form)
+    data = {"name":request.form["name"]}
+    Dojos.save (data)
     return redirect('/')

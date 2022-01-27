@@ -23,5 +23,5 @@ def GetAll(cls):
 # Add Ninjas
 @classmethod
 def CreateNew(cls, data):
-    query = "INSERT INTO dojos ( First_Name, Last_Name, Age, CreatedAt, UpdatedAt) VALUES (%(name)s, NOW(), NOW() );"
+    query = "INSERT INTO ninjas (First_Name, Last_Name, Age, CreatedAt, UpdatedAt, Dojo_Id) VALUES (%(First_Name)s, %(Last_Name)s, %(Age)s NOW(), NOW(),  %(Dojo_Id)s);"
     return connectToMySQL('Dojos_And_Ninjas').query_db(query, data)
