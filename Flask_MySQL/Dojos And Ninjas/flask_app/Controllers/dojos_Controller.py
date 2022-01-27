@@ -7,7 +7,9 @@ from flask_app import app
 
 @app.route('/')
 def Home():
-    return render_template('Dojo.html', dojos = Dojos.GetAll())
+    dojos = Dojos.GetAll()
+    # print(dojos[0]['ID'])
+    return render_template('Dojo.html', dojos = dojos)
 
 @app.route('/dojo/<int:Dojo_Id>')
 def AddDojoMain(Dojo_Id):

@@ -13,11 +13,11 @@ class Dojos:
     @classmethod
     def GetAll(cls):
         query = "SELECT * FROM dojos;"
-        results = connectToMySQL('Dojos_And_Ninjas').query_db(query)
-        dojos = []
-        for dojo in results:
-            dojos.append(cls(dojo))
-        return dojos
+        return connectToMySQL('Dojos_And_Ninjas').query_db(query)
+        # dojos = []
+        # for dojo in results:
+        #     dojos.append(cls(dojo))
+        # return dojos
 
 # Get One Dojo
     @classmethod
@@ -48,5 +48,5 @@ class Dojos:
                 "UpdatedAt": row['ninjas.UpdatedAt'],
                 "Dojo_Id": row["Dojo_Id"]
             }
-            dojo.ninjas.append(ninja.Ninja(ninja_data))
+            dojo.ninjas.append(ninja.Ninjas(ninja_data))
         return dojo
