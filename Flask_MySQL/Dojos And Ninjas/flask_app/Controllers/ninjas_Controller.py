@@ -1,4 +1,3 @@
-import re
 from flask import render_template, request, redirect
 from flask_app.Models.ninja import Ninjas
 from flask_app.Models.dojo import Dojos
