@@ -14,10 +14,6 @@ class Dojos:
     def GetAll(cls):
         query = "SELECT * FROM dojos;"
         return connectToMySQL('Dojos_And_Ninjas').query_db(query)
-        # dojos = []
-        # for dojo in results:
-        #     dojos.append(cls(dojo))
-        # return dojos
 
 # Get One Dojo
     @classmethod

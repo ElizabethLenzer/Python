@@ -1,14 +1,14 @@
-from urllib import request
 from flask import render_template, request, redirect
 from flask_app.Models.dojo import Dojos
 from flask_app import app
 
 # ---------------------------- Models = Crud ----------------------------------------------
+# flask is a framework but a light frame work
+# import things as we need them
 
 @app.route('/')
 def Home():
     dojos = Dojos.GetAll()
-    # print(dojos[0]['ID'])
     return render_template('Dojo.html', dojos = dojos)
 
 @app.route('/dojo/<int:Dojo_Id>')
