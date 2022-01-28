@@ -1,9 +1,14 @@
 from flask_app.Configuration.mySQLConnection import connectToMySQL
 from flask import flash
+from flask_app import app
+from flask_bcrypt import Bcrypt
+import re
+
+bcrypt = Bcrypt(app)
 
 class Users:
     def __init__(self, data):
-        self.id = data['ID']
+        self.ID = data['ID']
         self.First_Name = data['First_Name']
         self.Last_Name = data['Last_Name']
         self.Email = data ['Email']
@@ -15,6 +20,13 @@ class Users:
     @classmethod
     def GetOne(cls, data):
         query = 'SELECT * FROM Users WHERE ID = %(ID)s'
+        results = connectToMySQL('Users').query_db(query,data)
+        return cls(results[0])
+
+# Get By Email
+    @classmethod
+    def GetByEmail(cls, data):
+        query = "SELECT * FROM Users WHERE email = %(Email)s"
         results = connectToMySQL('Users').query_db(query,data)
         return cls(results[0])
 
@@ -31,12 +43,24 @@ class Users:
         if len(user['First_Name']) < 3:
             flash("First Name must be longer than 3 characters")
             is_valid = False
+
         if len(user['Last_Name']) < 3:
             flash("Last Name must be longer than 3 characters")
             is_valid = False
-        if len(user['Email']) < 3:
-            flash("Email must by longer than 3 characters")
+
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        if not EMAIL_REGEX.match(user['Email']):
+            flash("Invalid Email Address")
             is_valid = False
+        elif Users.GetByEmail({"Email": user['Email']}):
+            flash("Email is already in use")
+            is_valid = False
+
         if len(user['Password']) < 3:
             flash("Password must be longer than 3 characters")
             is_valid = False
+        elif user['Password'] != user['Confirm_Password']:
+            flash("Passwords Dont Match", "register")
+            is_valid = False
+
+        return is_valid
