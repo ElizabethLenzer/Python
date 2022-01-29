@@ -7,6 +7,48 @@
     <title>Dashboard</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Welcome {{user.First_Name}}</h1>
+        <h3>These are the recipes</h3>
+        <a href="/logout">Log Out</a>
+        <a href="/recipe/add"> Create</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Date Made</th>
+                <th>Under 30 Minutes</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for recipe in Recipes %}
+                <tr>
+                    <td>{{recipe.Name}}</td>
+                    {% if recipe.Under_30_Minutes %}
+                    <td>Yes</td>
+                    {% else %}
+                    <td>No</td>
+                    {% endif %}
+
+                    <td>
+                        <a href="/recipe/profile/{{recipe.ID}}">View</a>
+                        {% if user.ID == recipe.User_ID %}
+                        <a href="/recipe/{{recipe.ID}}">edit</a>
+                        <a href="/recipe/delete/{{recipe.ID}}">delete</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p class="warnings">{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 </body>
 </html>

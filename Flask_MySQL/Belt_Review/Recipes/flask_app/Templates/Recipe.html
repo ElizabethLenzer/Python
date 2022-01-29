@@ -7,6 +7,27 @@
     <title>Recipe</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Recipe</h1>
+        <a href="/Dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </header>
+    <div class="Recipe">
+        <h1>{{recipe.Name}}</h1>
+    <h3>Submitted By: {{recipe.creator.First_Name}}</h3>
+    <div>
+    <h3>Description</h3>
+    <p>{{recipe.Description}}</p>
+    <h3>Instructions</h3>
+    <p>{{recipe.Instructions}}</p>
+    <h3>Date Made</h3>
+    <p>{{recipe.Date_Made_On}}</p>
+    <h3>Under 30 Minutes</h3>
+    {% if recipe.Under_30_Minutes %}
+    <p>Yes</p>
+    {% else %}
+    <p>No</p>
+    {% endif %}
+    </div>
 </body>
 </html>

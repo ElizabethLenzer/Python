@@ -7,6 +7,7 @@ import re
 bcrypt = Bcrypt(app)
 
 class Users:
+    schema = 'recipe'
     def __init__(self, data):
         self.ID = data['ID']
         self.First_Name = data['First_Name']
@@ -20,21 +21,22 @@ class Users:
     @classmethod
     def GetOne(cls, data):
         query = 'SELECT * FROM Users WHERE ID = %(ID)s'
-        results = connectToMySQL('Users').query_db(query,data)
+        results = connectToMySQL(cls.schema).query_db(query,data)
         return cls(results[0])
 
 # Get By Email
     @classmethod
     def GetByEmail(cls, data):
-        query = "SELECT * FROM Users WHERE email = %(Email)s"
-        results = connectToMySQL('Users').query_db(query,data)
-        return cls(results[0])
+        query = "SELECT * FROM Users WHERE Email = %(Email)s"
+        results = connectToMySQL(cls.schema).query_db(query,data)
+        if results:
+            return cls(results[0])
 
 # Create New User
     @classmethod
     def CreateNew(cls, data):
         query = "INSERT INTO Users (First_Name, Last_Name, Email, Password, Created_At, Updated_At) VALUES (%(First_Name)s, %(Last_Name)s, %(Email)s, %(Password)s, NOW(), NOW())"
-        return connectToMySQL('Recipe').query_db(query, data)
+        return connectToMySQL(cls.schema).query_db(query, data)
 
 # FLASH
     @staticmethod
@@ -61,6 +63,22 @@ class Users:
             is_valid = False
         elif user['Password'] != user['Confirm_Password']:
             flash("Passwords Dont Match", "register")
+            is_valid = False
+        return is_valid
+
+# FLASH LOGIN VALIDATION
+    @staticmethod
+    def LoginValidation(user, InputPW):
+        is_valid = True
+        
+        print(user, InputPW)
+        if not user:
+            flash("Invalid Email or Passowrd", "Login")
+            is_valid = False
+            return is_valid
+        
+        if not bcrypt.check_password_hash(user.Password, InputPW['InputPW']):
+            flash('Invalid Password', 'Login')
             is_valid = False
 
         return is_valid

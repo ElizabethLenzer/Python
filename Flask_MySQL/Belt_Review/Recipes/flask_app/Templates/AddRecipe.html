@@ -7,6 +7,38 @@
     <title>Add Recipe</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Add New Recipe</h1>
+        <a href="/Dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </header>
+    <form action="/AddRecipe" method="POST">
+        <div>
+            <label>Name: </label>
+            <input type="text" name='Name'>
+            <label>Description: </label>
+            <input type="text" name='Description'>
+            <label>Instructions: </label>
+            <textarea name="Instructions" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="Date_Made_On">Date Made On:</label>
+            <input type="date" id="start" name="Date_Made_On"value="2022-01-28"min="2022-01-01" max="2025-12-31">
+            <div>
+                <label for="Yes">Yes</label>
+                <input type="radio" id='Yes' name="Under_30_Minutes" value="1">
+                <label for="No">No</label>
+                <input type="radio" id='No' name='Under_30_Minutes' value="0">
+            </div>
+        </div>
+        <button>Create</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p class="warnings">{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 </body>
 </html>
