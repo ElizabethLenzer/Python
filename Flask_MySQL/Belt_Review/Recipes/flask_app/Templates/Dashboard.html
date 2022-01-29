@@ -25,6 +25,7 @@
                 {% for recipe in Recipes %}
                 <tr>
                     <td>{{recipe.Name}}</td>
+                    <td>{{recipe.Date_Made_On}}</td>
                     {% if recipe.Under_30_Minutes %}
                     <td>Yes</td>
                     {% else %}

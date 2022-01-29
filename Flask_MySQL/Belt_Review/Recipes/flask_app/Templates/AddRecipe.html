@@ -12,7 +12,7 @@
         <a href="/Dashboard">Dashboard</a>
         <a href="/logout">Logout</a>
     </header>
-    <form action="/AddRecipe" method="POST">
+    <form action="/AddRecipe" method="post">
         <div>
             <label>Name: </label>
             <input type="text" name='Name'>
@@ -25,6 +25,7 @@
             <label for="Date_Made_On">Date Made On:</label>
             <input type="date" id="start" name="Date_Made_On"value="2022-01-28"min="2022-01-01" max="2025-12-31">
             <div>
+                <label for="Under_30_Minutes">Can be cooked Under 30 minutes?</label>
                 <label for="Yes">Yes</label>
                 <input type="radio" id='Yes' name="Under_30_Minutes" value="1">
                 <label for="No">No</label>

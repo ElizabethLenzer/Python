@@ -11,12 +11,13 @@ def ShowRecipes():
 def EditRecipe(Recipe_ID):
     return render_template('EditRecipe.html', recipe=Recipes.GetOne({'ID':Recipe_ID}))
 
-@app.route('/UpdateRecipe', methods = ["POST"])
-def UpdateRecipe():
+@app.route('/UpdateRecipe/<int:Recipe_ID>', methods = ["POST"])
+def UpdateRecipe(Recipe_ID):
         if not Recipes.ValidateRecipe(request.form):
             return redirect('/recipe/add')
         recipe_data = {
             **request.form,
+            'ID': Recipe_ID
         }
         Recipes.Update(recipe_data)
         return redirect('/Dashboard')

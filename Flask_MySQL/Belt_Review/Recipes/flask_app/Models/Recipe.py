@@ -48,24 +48,44 @@ class Recipes:
         
 # Recipe Validation
     @staticmethod
-    def ValidateRecipe(recipe):
+    def ValidateRecipe(post_data):
         is_valid = True
-        print(recipe)
+        print(post_data)
 
-        if len(recipe["Name"]) < 3:
-            flash("Name Must Be Longer Then Two Characters", "Recipe")
+        if len(post_data["Name"]) < 3:
+            flash("Name Must Be Longer Then Two Characters", "recipe")
             is_valid = False
 
-        if len(recipe["Instructions"]) < 3:
+        if len(post_data["Instructions"]) < 3:
             flash("Instructions Must Be Longer Then Two Characters", "recipe")
             is_valid = False
 
-        if len(recipe['Description']) < 5:
-            flash('Please Enter Valid Description Longer Then 15 Char.', 'recipe')
+        if len(post_data['Description']) < 5:
+            flash('Please Enter Valid Description Longer Then 5 Char.', 'recipe')
             is_valid = False
 
-        if 'Under_30_Minutes' not in recipe:
+        if 'Under_30_Minutes' not in post_data:
             flash("Confirm If Recipe is Under 30 Minutes", "recipe")
             is_valid = False
 
         return is_valid
+
+# Flash Validate Updated Recipe
+    # @staticmethod
+    #     def ValidateUpdatedRecipe(post_data):
+    #         is_valid = True
+    #         print(post_data)
+
+    #         if len(post_data["Name"]) < 3:
+    #             flash("Name Must Be Longer Then Two Characters", "Recipe")
+    #             is_valid = False
+
+    #         if len(post_data["Instructions"]) < 3:
+    #             flash("Instructions Must Be Longer Then Two Characters", "recipe")
+    #             is_valid = False
+
+    #         if 'Under_30_Minutes' not in post_data:
+    #             flash("Confirm If Recipe is Under 30 Minutes", "recipe")
+    #             is_valid = False
+
+    #         return is_valid
