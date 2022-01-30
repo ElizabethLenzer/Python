@@ -31,7 +31,7 @@ class Recipes:
 # Create New Recipe
     @classmethod
     def CreateNew(cls, data):
-        query = "INSERT INTO Recipes (Name, Description, Instructions, Date_Made_On, Created_At, Updated_At, User_ID) VALUES (%(Name)s, %(Description)s, %(Instructions)s, %(Date_Made_On)s, NOW(), NOW(), %(User_ID)s)"
+        query = "INSERT INTO Recipes (Name, Description, Instructions, Date_Made_On, Under_30_Minutes, Created_At, Updated_At, User_ID) VALUES (%(Name)s, %(Description)s, %(Instructions)s, %(Date_Made_On)s, %(Under_30_Minutes)s, NOW(), NOW(), %(User_ID)s)"
         return connectToMySQL(cls.schema).query_db(query, data)
 
 # Update Recipe
@@ -70,22 +70,3 @@ class Recipes:
 
         return is_valid
 
-# Flash Validate Updated Recipe
-    # @staticmethod
-    #     def ValidateUpdatedRecipe(post_data):
-    #         is_valid = True
-    #         print(post_data)
-
-    #         if len(post_data["Name"]) < 3:
-    #             flash("Name Must Be Longer Then Two Characters", "Recipe")
-    #             is_valid = False
-
-    #         if len(post_data["Instructions"]) < 3:
-    #             flash("Instructions Must Be Longer Then Two Characters", "recipe")
-    #             is_valid = False
-
-    #         if 'Under_30_Minutes' not in post_data:
-    #             flash("Confirm If Recipe is Under 30 Minutes", "recipe")
-    #             is_valid = False
-
-    #         return is_valid

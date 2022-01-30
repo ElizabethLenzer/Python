@@ -4,32 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Home</title>
 </head>
 <body>
-    <div class='Registration Form'>
-        <form action="/InsertUser" method='POST'>
-            <label for="First_Name">First Name: </label>
-            <input type="text" name="First_Name">
-            <label for="Last_Name">Last Name: </label>
-            <input type="text" name="Last_Name">
-            <label for="Email">Email: </label>
-            <input type="text" name="Email">
-            <label for="Password">Password</label>
-            <input type="Password" name="Password">
-            <label for="Confirm_Password">Confirm Password: </label>
-            <input type="Password" name="Confirm_Password">
-            <button>Register</button>
-        </form>
+    <div class="Navigation">
+        <h1>Welcome to Recipes</h1>
     </div>
-    <div class="Login">
-        <form action="/verify/login" method="POST">
-            <label for="Email">Email: </label>
-            <input type="text" name='Email'>
-            <label for="Password">Password: </label>
-            <input type="Password" name="Password">
-            <button>Login</button>
-        </form>
+    <div class="Main Container Justify-Center">
+        <div class='RegistrationForm'>
+            Please Sign Up Here!
+            <form action="/InsertUser" method='POST'>
+                <label for="First_Name">First Name: </label>
+                <input type="text" name="First_Name">
+                <label for="Last_Name">Last Name: </label>
+                <input type="text" name="Last_Name">
+                <label for="Email">Email: </label>
+                <input type="text" name="Email">
+                <label for="Password">Password</label>
+                <input type="Password" name="Password">
+                <label for="Confirm_Password">Confirm Password: </label>
+                <input type="Password" name="Confirm_Password">
+                <button>Register</button>
+            </form>
+        </div>
+        <div class="LoginForm">
+            Please log in Here
+            <form action="/verify/login" method="POST">
+                <label for="Email">Email: </label>
+                <input type="text" name='Email'>
+                <label for="Password">Password: </label>
+                <input type="Password" name="Password">
+                <button>Login</button>
+            </form>
+        </div>
     </div>
+
 </body>
 </html>
