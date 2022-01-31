@@ -45,4 +45,3 @@ def ShowRecipe(Recipe_ID):
 def DeleteRecipe(Recipe_ID):
     recipe=Recipes.Delete({'ID':Recipe_ID})
     return redirect('/Dashboard')
-

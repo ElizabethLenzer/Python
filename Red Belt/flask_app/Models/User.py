@@ -42,12 +42,12 @@ class Users:
     @staticmethod
     def ValidateUser(user):
         is_valid = True
-        if len(user['First_Name']) < 3:
-            flash("First Name must be longer than 3 characters")
+        if len(user['First_Name']) < 2:
+            flash("First Name must be longer than 2 characters")
             is_valid = False
 
-        if len(user['Last_Name']) < 3:
-            flash("Last Name must be longer than 3 characters")
+        if len(user['Last_Name']) < 2:
+            flash("Last Name must be longer than 2 characters")
             is_valid = False
 
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -58,8 +58,8 @@ class Users:
             flash("Email is already in use")
             is_valid = False
 
-        if len(user['Password']) < 3:
-            flash("Password must be longer than 3 characters")
+        if len(user['Password']) < 8:
+            flash("Password must be longer than 8 characters")
             is_valid = False
         elif user['Password'] != user['Confirm_Password']:
             flash("Passwords Dont Match", "register")
