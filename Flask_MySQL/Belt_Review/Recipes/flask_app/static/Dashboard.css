@@ -3,20 +3,11 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.Navigation{
+header{
     background-color: aqua;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.RegistrationForm{
-    flex:1;
-    background-color: aqua;
-    justify-content: center;
-}
 
-.LoginForm{
-    flex: 1;
-    background-color: blueviolet;
-}
