@@ -1,6 +1,7 @@
 from flask_app.Configuration.mySQLConnection import connectToMySQL
 from flask import flash
 from flask_app.Models.User import Users
+from flask_app.Models import User
 
 class Arbortraries:
     schema ='Arbortrary'
@@ -8,6 +9,7 @@ class Arbortraries:
         self.ID = data['ID']
         self.Species = data['Species']
         self.Location = data['Location']
+        self.Reason = data['Reason']
         self.Date_Planted = data['Date_Planted']
         self.Created_At = data['Created_At']
         self.Updated_At = data['Updated_At']
@@ -25,7 +27,12 @@ class Arbortraries:
     @classmethod
     def GetAll(cls):
         query = "SELECT * FROM Arbortrary"
-        return connectToMySQL(cls.schema).query_db(query)
+        results = connectToMySQL(cls.schema).query_db(query)
+        users = []
+        for user in results:
+            users.append(cls(user))
+        return users
+
 
 # Create New Arbortrary
     @classmethod

@@ -9,36 +9,30 @@
 <body>
     <header>
         <h1>Arbortrary</h1>
-        <a href="/Arbortrary/MyTrees">My Trees</a>
         <h1>Welcome {{user.First_Name}}</h1>
-        <h3>A site to track randomly planted trees</h3>
-        <a href="/Arbortrary/add"> Plant a Tree</a>
+        <h3>A site to track radomly planted trees</h3>
         <a href="/logout">Log Out</a>
+        <a href="/Dashboard"> Dashboard</a>
     </header>
     <main>
         <table>
+            <h1>Manage My Trees</h1>
             <thead>
                 <th>Species</th>
-                <th>Planted By</th>
+                <th>Date Planted</th>
                 <th>Actions</th>
             </thead>
             <tbody>
-                {% for arbortrary in Arbortraries %}
+                {% for arbortrary in user.Arbortrary %}
                 <tr>
                     <td>{{arbortrary.Species}}</td>
-                    <td>{{arbortrary.creator.First_Name}}</td>
+                    <td>{{arbortrary.Date_Planted}}</td>
                     <td>
-                        <a href="/Arbortrary/profile/{{arbortrary.ID}}">details</a>
+                        <a href="/Arbortrary/{{Arbortrary.ID}}">edit</a>
+                        <a href="/Arbortrary/delete/{{Arbortrary.ID}}">delete</a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </main>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <p class="warnings">{{message}}</p>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}

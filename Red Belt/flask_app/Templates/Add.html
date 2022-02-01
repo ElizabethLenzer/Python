@@ -8,10 +8,15 @@
 </head>
 <body>
     <header>
-        <h1>Add New Arbortrary</h1>
+        <h1>Arbortrary</h1>
+        <a href="/Arbortrary/MyTrees">My Trees</a>
+        <h1>Welcome {{user.First_Name}}</h1>
+        <h3>A site to track randomly planted trees</h3>
         <a href="/Dashboard">Dashboard</a>
-        <a href="/logout">Logout</a>
+        <a href="/Arbortrary/add"> Plant a Tree</a>
+        <a href="/logout">Log Out</a>
     </header>
+    <h1>Arbitrarily Plant a Tree</h1>
     <form action="/AddArbortrary" method="post">
         <div>
             <label>Species: </label>

@@ -1,13 +1,14 @@
 from flask_app.Configuration.mySQLConnection import connectToMySQL
 from flask import flash
 from flask_app import app
-from flask_Bcrypt import Bcrypt
+from flask_bcrypt import Bcrypt
+from flask_app.Models import Arbortrary
 import re
 
 bcrypt = Bcrypt(app)
 
 class Users:
-    schema = 'bands'
+    schema = 'Arbortrary'
     def __init__(self, data):
         self.ID = data['ID']
         self.First_Name = data['First_Name']
@@ -16,6 +17,7 @@ class Users:
         self.Password = data['Password']
         self.Created_At = data['Created_At']
         self.Updated_At = data['Updated_At']
+        self.Arbortrary=[]
 
 # Get One User
     @classmethod
@@ -24,7 +26,7 @@ class Users:
         results = connectToMySQL(cls.schema).query_db(query,data)
         return cls(results[0])
 
-# Get By Email
+# Get by email
     @classmethod
     def GetByEmail(cls, data):
         query = "SELECT * FROM Users WHERE Email = %(Email)s"
@@ -37,6 +39,24 @@ class Users:
     def CreateNew(cls, data):
         query = "INSERT INTO Users (First_Name, Last_Name, Email, Password, Created_At, Updated_At) VALUES (%(First_Name)s, %(Last_Name)s, %(Email)s, %(Password)s, NOW(), NOW())"
         return connectToMySQL(cls.schema).query_db(query, data)
+
+# Left Join
+    @classmethod
+    def ArbortrariesJoinUsers(cls, data):
+        query = 'SELECT * FROM Users LEFT JOIN Abortrary ON Users.ID = Arbortrary.User_ID WHERE Users.ID = %(ID)s;'
+        results = connectToMySQL(cls.schema).query_db(query, data)
+        user = cls(results[0])
+        for row in results:
+            Arbortrary_Data = {
+                'ID': row ['Arbortrary.ID'],
+                'Species': row ['Species'],
+                'Date_Planted': row ['Date_Planted'],
+                'Created_At': row['Arbortray.Created_At'],
+                'Updated_At': row['Arbortray.Updated_At'],
+                'User_ID': row['User_ID']
+            }
+        user.Arbortrary.append(Arbortrary.Arbortraries(Arbortrary_Data))
+        return user
 
 # FLASH
     @staticmethod
