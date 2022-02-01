@@ -9,18 +9,21 @@
 <body>
     <header>
         <h1>Arbortrary</h1>
-        <a href="/Dashboard">Dashboard</a>
-        <a href="/logout">Logout</a>
+        <a href="/Arbortrary/MyTrees">My Trees</a>
+        <h1>Welcome {{users.First_Name}}</h1>
+        <h3>A site to track randomly planted trees</h3>
+        <a href="/Arbortrary/add"> Plant a Tree</a>
+        <a href="/logout">Log Out</a>
     </header>
     <div class="Arbortrary">
-        <h1>{{Arbortrary.Name}}</h1>
-    <h3>Submitted By: {{Arbortrary.creator.First_Name}}</h3>
+        <h1>{{arbortrary.Name}}</h1>
+    <h3>Submitted By: {{arbortrary.creator.First_Name}}</h3>
     <div>
     <h3>Description</h3>
-    <p>{{Arbortrary.Location}}</p>
+    <p>{{arbortrary.Location}}</p>
     <h3>Instructions</h3>
-    <p>{{Arbortrary.Reason}}</p>
+    <p>{{arbortrary.Reason}}</p>
     <h3>Date Planted</h3>
-    <p>{{Arbortrary.Date_Planted}}</p>
+    <p>{{arbortrary.Date_Planted}}</p>
 </body>
 </html>
